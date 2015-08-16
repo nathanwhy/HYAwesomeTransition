@@ -4,7 +4,7 @@ Custom transition between viewcontrollers.
 
 The idea comes from gewara(格瓦拉).
 
-![screenshot](screenshot/screenshot.git)
+![screenshot](screenshot/screenshot.gif)
 
 ## Requirements
 
