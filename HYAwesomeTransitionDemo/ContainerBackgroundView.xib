@@ -12,7 +12,7 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tfc-Wz-DPW">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
-                    <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.1978925467" green="0.41660865689999999" blue="0.58201152150000002" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="200" id="U5x-4v-HPn"/>
                     </constraints>

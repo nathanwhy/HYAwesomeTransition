@@ -10,9 +10,10 @@
 #import "HYAwesomeTransition.h"
 #import "ModalViewController.h"
 
-@interface ViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UIViewControllerTransitioningDelegate>
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (strong, nonatomic)HYAwesomeTransition *awesometransition;
+@interface ViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UIViewControllerTransitioningDelegate,ModalViewControllerDelegate>
+@property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
+@property (nonatomic, strong)HYAwesomeTransition *awesometransition;
+@property (nonatomic, weak) UIView *transitionCell;
 
 @end
 
@@ -34,8 +35,8 @@
     static NSString *ReuseIdentifier = @"CustomMainCell";
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ReuseIdentifier forIndexPath:indexPath];
     
-    //It is not good practice
-    NSString *imageName = indexPath.row == 1? @"doge": @"doge2";
+    //Just for demo. It was not good practice
+    NSString *imageName = indexPath.row == 10? @"doge": @"doge2";
     UIImageView *imageView = (UIImageView *)[cell viewWithTag:99];
     imageView.image = [UIImage imageNamed:imageName];
     
@@ -43,7 +44,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 12;
+    return 30;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -53,13 +54,30 @@
     ModalViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ModalViewController"];
     [vc loadView];
     vc.transitioningDelegate = self;
+    vc.delegate              = self;
+    vc.avatar.hidden         = YES;
     
     CGRect startFrame = [cell convertRect:cell.bounds toView:self.view];
     CGRect finalFrame = vc.avatar.frame;
     
-    [self.awesometransition registerStartFrame:startFrame finalFrame:finalFrame transitionView:cell];
+    [self.awesometransition registerStartFrame:startFrame
+                                    finalFrame:finalFrame transitionView:cell];
     
-    [self presentViewController:vc animated:YES completion:nil];
+    cell.hidden = YES;
+    self.transitionCell = cell;
+    
+    __weak ModalViewController *weakVC = vc;
+    [self presentViewController:vc animated:YES completion:^{
+        weakVC.avatar.hidden = NO;
+    }];
+}
+
+#pragma mark - ModelViewController delegate
+
+- (void)modalViewControllerDidClickedDismissButton:(ModalViewController *)viewController{
+    [self dismissViewControllerAnimated:YES completion:^{
+        self.transitionCell.hidden = NO;
+    }];
 }
 
 #pragma mark - transition

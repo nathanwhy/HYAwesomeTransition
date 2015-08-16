@@ -21,12 +21,6 @@
 }
 - (IBAction)backClicked:(id)sender {
     
-//    [self buttonClicked:nil];
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
--(void) buttonClicked:(id)sender
-{
     if (self.delegate && [self.delegate respondsToSelector:@selector(modalViewControllerDidClickedDismissButton:)]) {
         [self.delegate modalViewControllerDidClickedDismissButton:self];
     }
