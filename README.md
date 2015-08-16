@@ -22,11 +22,9 @@ self.awesometransition.containerBackgroundView = customView;
                                 finalFrame:finalFrame
                             transitionView:cell];
 
-cell.hidden = YES;
-
 [self presentViewController:vc animated:YES completion:^{
         vc.avatar.hidden = NO;
-    }];
+}];
 ```
 
 Implement `UIViewControllerTransitioningDelegate` and this delegate method:
