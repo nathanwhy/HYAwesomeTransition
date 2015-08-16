@@ -14,17 +14,23 @@
 @property (nonatomic, strong)UIView *snapshotView;
 @property (nonatomic, assign)CGRect startFrame;
 @property (nonatomic, assign)CGRect finalFrame;
+@property (nonatomic, copy) void (^completion)(BOOL finished);
 @end
 
 @implementation HYAwesomeTransition
 
 - (void)registerStartFrame:(CGRect)startFrame
                 finalFrame:(CGRect)finalFrame
-            transitionView:(UIView *)transitionView{
+            transitionView:(UIView *)transitionView {
     
     _startFrame = startFrame;
     _finalFrame = finalFrame;
     _snapshotView = [transitionView snapshotViewAfterScreenUpdates:NO];
+    
+    _snapshotView.layer.shadowOpacity = 0.5;
+    _snapshotView.layer.shadowRadius = 3;
+    _snapshotView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+    _snapshotView.layer.shadowOffset = CGSizeMake(5, 5);
 }
 
 
@@ -98,7 +104,7 @@
         
         toVC.view.hidden = NO;
         
-        CGRect rect = CGRectInset(_finalFrame, -450, -450);
+        CGRect rect = CGRectInset(_finalFrame, -500, -500);
         
         CGPathRef startPath = CGPathCreateWithEllipseInRect(rect, NULL);
         CGPathRef endPath   = CGPathCreateWithEllipseInRect(_finalFrame, NULL);
@@ -132,6 +138,7 @@
             [maskLayer removeFromSuperlayer];
             [snapshotView removeFromSuperview];
             [transitionContext completeTransition:YES];
+            
         }];
     }];
     
@@ -172,7 +179,7 @@
     
     NSTimeInterval partDuration = [self transitionDuration:transitionContext] / 3;
     
-    CGRect rect = CGRectInset(_finalFrame, -450, -450);
+    CGRect rect = CGRectInset(_finalFrame, -500, -500);
     
     CGPathRef endPath   = CGPathCreateWithEllipseInRect(rect, NULL);
     CGPathRef startPath = CGPathCreateWithEllipseInRect(_finalFrame, NULL);

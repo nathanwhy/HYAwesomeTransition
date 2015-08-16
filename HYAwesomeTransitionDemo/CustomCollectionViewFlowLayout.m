@@ -27,7 +27,8 @@
 }
 
 - (void)setupDefaultSetting{
-    self.itemSize = CGSizeMake(100, 100);
+    self.itemSize = CGSizeMake(120, 120);
+    self.minimumInteritemSpacing = 5;
 }
 
 @end
