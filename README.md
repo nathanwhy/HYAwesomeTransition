@@ -43,7 +43,22 @@ Implement `UIViewControllerTransitioningDelegate` and this delegate method:
 }
 ```
 
-you can also use `UINavigationControllerDelegate`, but interactive gesture is not suppored.
+If you use `UINavigationController`，you have to implement `UINavigationControllerDelegate` instead, but interactive gesture is not suppored yet.
+
+``` 
+- (id <UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                   animationControllerForOperation:(UINavigationControllerOperation)operation
+                                                fromViewController:(UIViewController *)fromVC
+                                                  toViewController:(UIViewController *)toVC{
+    if (operation != UINavigationControllerOperationPush) {
+        self.awesometransition.present = NO;
+    }else{
+        self.awesometransition.present = YES;
+    }
+
+    return self.awesometransition;
+}
+```
 
 ## License
 
