@@ -16,7 +16,6 @@
 		D8306C5E1B6A5266005A92B4 /* HYAwesomeTransitionDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D8306C5D1B6A5266005A92B4 /* HYAwesomeTransitionDemoTests.m */; };
 		D8306C6A1B6A52B2005A92B4 /* HYAwesomeTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = D8306C691B6A52B2005A92B4 /* HYAwesomeTransition.m */; };
 		D8306C701B6A53FD005A92B4 /* ModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8306C6F1B6A53FD005A92B4 /* ModalViewController.m */; };
-		D8306C731B6A57EF005A92B4 /* CustomCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D8306C721B6A57EF005A92B4 /* CustomCollectionViewFlowLayout.m */; };
 		D8306C751B6A7D81005A92B4 /* ContainerBackgroundView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8306C741B6A7D81005A92B4 /* ContainerBackgroundView.xib */; };
 /* End PBXBuildFile section */
 
@@ -48,8 +47,6 @@
 		D8306C691B6A52B2005A92B4 /* HYAwesomeTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYAwesomeTransition.m; sourceTree = "<group>"; };
 		D8306C6E1B6A53FD005A92B4 /* ModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalViewController.h; sourceTree = "<group>"; };
 		D8306C6F1B6A53FD005A92B4 /* ModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalViewController.m; sourceTree = "<group>"; };
-		D8306C711B6A57EF005A92B4 /* CustomCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCollectionViewFlowLayout.h; sourceTree = "<group>"; };
-		D8306C721B6A57EF005A92B4 /* CustomCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		D8306C741B6A7D81005A92B4 /* ContainerBackgroundView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContainerBackgroundView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,8 +97,6 @@
 				D8306C6E1B6A53FD005A92B4 /* ModalViewController.h */,
 				D8306C6F1B6A53FD005A92B4 /* ModalViewController.m */,
 				D8306C741B6A7D81005A92B4 /* ContainerBackgroundView.xib */,
-				D8306C711B6A57EF005A92B4 /* CustomCollectionViewFlowLayout.h */,
-				D8306C721B6A57EF005A92B4 /* CustomCollectionViewFlowLayout.m */,
 				D8306C4B1B6A5266005A92B4 /* Main.storyboard */,
 				D8306C4E1B6A5266005A92B4 /* Images.xcassets */,
 				D8306C501B6A5266005A92B4 /* LaunchScreen.xib */,
@@ -250,7 +245,6 @@
 				D8306C471B6A5266005A92B4 /* AppDelegate.m in Sources */,
 				D8306C701B6A53FD005A92B4 /* ModalViewController.m in Sources */,
 				D8306C441B6A5266005A92B4 /* main.m in Sources */,
-				D8306C731B6A57EF005A92B4 /* CustomCollectionViewFlowLayout.m in Sources */,
 				D8306C6A1B6A52B2005A92B4 /* HYAwesomeTransition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -448,6 +442,7 @@
 				D8306C631B6A5266005A92B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D8306C641B6A5266005A92B4 /* Build configuration list for PBXNativeTarget "HYAwesomeTransitionDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -456,6 +451,7 @@
 				D8306C661B6A5266005A92B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

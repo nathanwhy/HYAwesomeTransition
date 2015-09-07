@@ -10,7 +10,7 @@
 #import "HYAwesomeTransition.h"
 #import "ModalViewController.h"
 
-@interface ViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UIViewControllerTransitioningDelegate,ModalViewControllerDelegate>
+@interface ViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UIViewControllerTransitioningDelegate,ModalViewControllerDelegate,UINavigationControllerDelegate>
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong)HYAwesomeTransition *awesometransition;
 @property (nonatomic, weak) UIView *transitionCell;
@@ -92,5 +92,6 @@
     self.awesometransition.present = NO;
     return self.awesometransition;
 }
+
 
 @end

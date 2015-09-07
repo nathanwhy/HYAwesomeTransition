@@ -14,7 +14,7 @@ iOS 7.0 +
 
 ## Example
 
-``` 
+```objc 
 self.awesometransition = [[HYAwesomeTransition alloc] init];
 self.awesometransition.duration = 2.0f;
 self.awesometransition.containerBackgroundView = customView;
@@ -29,7 +29,7 @@ self.awesometransition.containerBackgroundView = customView;
 
 Implement `UIViewControllerTransitioningDelegate` and this delegate method:
 
-``` 
+```objc 
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source
 {
     self.awesometransition.present = YES;
@@ -43,9 +43,9 @@ Implement `UIViewControllerTransitioningDelegate` and this delegate method:
 }
 ```
 
-If you use `UINavigationController`，you have to implement `UINavigationControllerDelegate` instead, but interactive gesture is not suppored yet.
+If you use `UINavigationController`，you have to implement `UINavigationControllerDelegate` instead of `UIViewControllerTransitioningDelegate`, but interactive gesture is not suppored yet.
 
-``` 
+```objc 
 - (id <UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
                                    animationControllerForOperation:(UINavigationControllerOperation)operation
                                                 fromViewController:(UIViewController *)fromVC
