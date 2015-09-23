@@ -13,7 +13,7 @@
 @interface ViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UIViewControllerTransitioningDelegate,ModalViewControllerDelegate,UINavigationControllerDelegate>
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong)HYAwesomeTransition *awesometransition;
-@property (nonatomic, weak) UIView *transitionCell;
+@property (nonatomic, weak) UICollectionViewCell *transitionCell;
 
 @end
 
@@ -81,6 +81,7 @@
 }
 
 #pragma mark - transition
+
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source
 {
     self.awesometransition.present = YES;
@@ -93,5 +94,20 @@
     return self.awesometransition;
 }
 
+// If you use UINavigationController, you have to implement UINavigationControllerDelegate
+// instead of UIViewControllerTransitioningDelegate
+//
+/*
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC{
+    
+    if (operation == UINavigationControllerOperationPush) {
+        self.awesometransition.present = YES;
+    }else{
+        self.awesometransition.present = NO;
+        self.transitionCell.hidden = NO;
+    }
+    return self.awesometransition;
+}
+*/
 
 @end
