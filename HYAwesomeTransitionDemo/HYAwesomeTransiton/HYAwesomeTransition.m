@@ -222,16 +222,7 @@
             }];
             
         } completion:^(BOOL finished) {
-            
-            if (self.containerBackgroundView) {
-                [self.containerBackgroundView removeFromSuperview];
-            }
-            snapshotView.hidden = NO;
-            [snapshotView removeFromSuperview];
-            [toVC.view removeFromSuperview];
-            [fromVC.view removeFromSuperview];
             [transitionContext completeTransition:YES];
-            
         }];
     }];
 }
