@@ -222,6 +222,10 @@
             }];
             
         } completion:^(BOOL finished) {
+            if (self.containerBackgroundView) {
+                [self.containerBackgroundView removeFromSuperview];
+            }
+            [snapshotView removeFromSuperview];
             [transitionContext completeTransition:YES];
         }];
     }];
