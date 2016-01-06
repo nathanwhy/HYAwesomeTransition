@@ -23,7 +23,7 @@
     [super viewDidLoad];
     
     self.awesometransition = [[HYAwesomeTransition alloc] init];
-    self.awesometransition.duration = 2.0f;
+    self.awesometransition.duration = 1.0f;
     self.awesometransition.containerBackgroundView = ({
         UIView *bgView = (UIView *)[[[NSBundle mainBundle] loadNibNamed:@"ContainerBackgroundView" owner:nil options:nil] lastObject];
         bgView;
@@ -52,13 +52,11 @@
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
     
     ModalViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ModalViewController"];
-    [vc loadView];
     vc.transitioningDelegate = self;
     vc.delegate              = self;
-    vc.avatar.hidden         = YES;
     
     CGRect startFrame = [cell convertRect:cell.bounds toView:self.view];
-    CGRect finalFrame = vc.avatar.frame;
+    CGRect finalFrame = CGRectMake(40, 150, 100, 100);
     
     [self.awesometransition registerStartFrame:startFrame
                                     finalFrame:finalFrame transitionView:cell];
@@ -75,6 +73,8 @@
 #pragma mark - ModelViewController delegate
 
 - (void)modalViewControllerDidClickedDismissButton:(ModalViewController *)viewController{
+    self.awesometransition.finalFrame = [viewController.avatar convertRect:viewController.avatar.bounds toView:viewController.view];
+    viewController.avatar.hidden = YES;
     [self dismissViewControllerAnimated:YES completion:^{
         self.transitionCell.hidden = NO;
     }];
