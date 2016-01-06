@@ -12,6 +12,7 @@
 @interface HYAwesomeTransition : NSObject<UIViewControllerAnimatedTransitioning>
 
 @property (nonatomic, assign)CGFloat duration;
+@property (nonatomic, assign)CGRect finalFrame;
 @property (nonatomic, strong)UIView *containerBackgroundView;
 @property (nonatomic, getter=isPresent)BOOL present;
 

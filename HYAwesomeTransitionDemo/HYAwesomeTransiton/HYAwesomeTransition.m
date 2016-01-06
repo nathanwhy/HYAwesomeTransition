@@ -13,7 +13,6 @@
 
 @property (nonatomic, strong)UIView *snapshotView;
 @property (nonatomic, assign)CGRect startFrame;
-@property (nonatomic, assign)CGRect finalFrame;
 @property (nonatomic, copy) void (^completion)(BOOL finished);
 @end
 
