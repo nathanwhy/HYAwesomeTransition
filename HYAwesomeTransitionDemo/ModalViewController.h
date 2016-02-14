@@ -16,4 +16,5 @@
 @interface ModalViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
 @property (nonatomic, weak) id<ModalViewControllerDelegate> delegate;
+@property (nonatomic, copy) NSString *imageName;
 @end

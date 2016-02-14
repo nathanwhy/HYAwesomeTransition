@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "HYAwesomeTransition.h"
 #import "ModalViewController.h"
+#import "CustomCell.h"
 
 @interface ViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UIViewControllerTransitioningDelegate,ModalViewControllerDelegate,UINavigationControllerDelegate>
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
@@ -23,7 +24,7 @@
     [super viewDidLoad];
     
     self.awesometransition = [[HYAwesomeTransition alloc] init];
-    self.awesometransition.duration = 1.0f;
+    self.awesometransition.duration = 1.5f;
     self.awesometransition.containerBackgroundView = ({
         UIView *bgView = (UIView *)[[[NSBundle mainBundle] loadNibNamed:@"ContainerBackgroundView" owner:nil options:nil] lastObject];
         bgView;
@@ -33,12 +34,10 @@
 #pragma mark - collectionView
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *ReuseIdentifier = @"CustomMainCell";
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ReuseIdentifier forIndexPath:indexPath];
+    CustomCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ReuseIdentifier forIndexPath:indexPath];
     
-    //Just for demo. It was not good practice
     NSString *imageName = indexPath.row == 10? @"doge": @"doge2";
-    UIImageView *imageView = (UIImageView *)[cell viewWithTag:99];
-    imageView.image = [UIImage imageNamed:imageName];
+    cell.imageView.image = [UIImage imageNamed:imageName];
     
     return cell;
 }
@@ -52,6 +51,7 @@
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
     
     ModalViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ModalViewController"];
+    vc.imageName = indexPath.row == 10? @"doge": @"doge2";
     vc.transitioningDelegate = self;
     vc.delegate              = self;
     
