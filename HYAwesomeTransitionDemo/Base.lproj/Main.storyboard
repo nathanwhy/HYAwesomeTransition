@@ -28,7 +28,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CustomMainCell" id="MHJ-JL-Rps">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CustomMainCell" id="MHJ-JL-Rps" customClass="CustomCell">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -49,6 +49,9 @@
                                             <constraint firstAttribute="trailing" secondItem="Bnn-6c-1K0" secondAttribute="trailing" id="uoj-oD-bpK"/>
                                         </constraints>
                                         <size key="customSize" width="100" height="100"/>
+                                        <connections>
+                                            <outlet property="imageView" destination="Bnn-6c-1K0" id="rG5-NR-RBd"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -117,7 +120,7 @@
                                         <rect key="frame" x="30" y="300" width="260" height="345"/>
                                         <string key="text">Adopt the UIViewControllerAnimatedTransitioning protocol in objects that implement the animations for a custom view controller transition. The methods in this protocol let you define an animator object, which creates the animations for transitioning a view controller on or off screen in a fixed amount of time. The animations you create using this protocol must not be interactive. To create interactive transitions, you must combine your animator object with another object that controls the timing of your animations.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MKm-0o-kPc">

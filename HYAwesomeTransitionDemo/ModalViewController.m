@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.avatar.image = [UIImage imageNamed:self.imageName];
     
 }
 - (IBAction)backClicked:(id)sender {

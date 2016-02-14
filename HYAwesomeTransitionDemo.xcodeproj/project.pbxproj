@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		96B9EABF1C70827B0079D621 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96B9EABD1C70827B0079D621 /* CustomCell.m */; };
 		D8306C441B6A5266005A92B4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D8306C431B6A5266005A92B4 /* main.m */; };
 		D8306C471B6A5266005A92B4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D8306C461B6A5266005A92B4 /* AppDelegate.m */; };
 		D8306C4A1B6A5266005A92B4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8306C491B6A5266005A92B4 /* ViewController.m */; };
@@ -30,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		96B9EABC1C70827B0079D621 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
+		96B9EABD1C70827B0079D621 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
 		D8306C3E1B6A5266005A92B4 /* HYAwesomeTransitionDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HYAwesomeTransitionDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8306C421B6A5266005A92B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D8306C431B6A5266005A92B4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -96,6 +99,8 @@
 				D8306C491B6A5266005A92B4 /* ViewController.m */,
 				D8306C6E1B6A53FD005A92B4 /* ModalViewController.h */,
 				D8306C6F1B6A53FD005A92B4 /* ModalViewController.m */,
+				96B9EABC1C70827B0079D621 /* CustomCell.h */,
+				96B9EABD1C70827B0079D621 /* CustomCell.m */,
 				D8306C741B6A7D81005A92B4 /* ContainerBackgroundView.xib */,
 				D8306C4B1B6A5266005A92B4 /* Main.storyboard */,
 				D8306C4E1B6A5266005A92B4 /* Images.xcassets */,
@@ -243,6 +248,7 @@
 			files = (
 				D8306C4A1B6A5266005A92B4 /* ViewController.m in Sources */,
 				D8306C471B6A5266005A92B4 /* AppDelegate.m in Sources */,
+				96B9EABF1C70827B0079D621 /* CustomCell.m in Sources */,
 				D8306C701B6A53FD005A92B4 /* ModalViewController.m in Sources */,
 				D8306C441B6A5266005A92B4 /* main.m in Sources */,
 				D8306C6A1B6A52B2005A92B4 /* HYAwesomeTransition.m in Sources */,
