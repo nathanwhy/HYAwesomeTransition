@@ -14,7 +14,6 @@
 @interface ViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UIViewControllerTransitioningDelegate,ModalViewControllerDelegate,UINavigationControllerDelegate>
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong)HYAwesomeTransition *awesometransition;
-@property (nonatomic, weak) UICollectionViewCell *transitionCell;
 
 @end
 
@@ -61,12 +60,8 @@
     [self.awesometransition registerStartFrame:startFrame
                                     finalFrame:finalFrame transitionView:cell];
     
-    cell.hidden = YES;
-    self.transitionCell = cell;
-    
-    __weak ModalViewController *weakVC = vc;
     [self presentViewController:vc animated:YES completion:^{
-        weakVC.avatar.hidden = NO;
+        vc.avatar.hidden = NO;
     }];
 }
 
@@ -75,9 +70,7 @@
 - (void)modalViewControllerDidClickedDismissButton:(ModalViewController *)viewController{
     self.awesometransition.finalFrame = [viewController.avatar convertRect:viewController.avatar.bounds toView:viewController.view];
     viewController.avatar.hidden = YES;
-    [self dismissViewControllerAnimated:YES completion:^{
-        self.transitionCell.hidden = NO;
-    }];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - transition

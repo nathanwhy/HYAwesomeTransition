@@ -14,6 +14,7 @@
 @property (nonatomic, strong)UIView *snapshotView;
 @property (nonatomic, assign)CGRect startFrame;
 @property (nonatomic, copy) void (^completion)(BOOL finished);
+@property (nonatomic, weak) UIView *originView;
 @end
 
 @implementation HYAwesomeTransition
@@ -25,6 +26,7 @@
     _startFrame = startFrame;
     _finalFrame = finalFrame;
     _snapshotView = [transitionView snapshotViewAfterScreenUpdates:NO];
+    _originView = transitionView;
     
     _snapshotView.layer.shadowOpacity = 0.5;
     _snapshotView.layer.shadowRadius = 3;
@@ -84,6 +86,7 @@
     toVC.view.hidden = YES;
     
     NSTimeInterval partDuration = duration / 3;
+    self.originView.hidden = YES;
     
     [UIView animateKeyframesWithDuration:partDuration * 3 delay:0 options:UIViewKeyframeAnimationOptionCalculationModeLinear animations:^{
         
@@ -221,6 +224,7 @@
             }];
             
         } completion:^(BOOL finished) {
+            self.originView.hidden = NO;
             if (self.containerBackgroundView) {
                 [self.containerBackgroundView removeFromSuperview];
             }
