@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10116"/>
@@ -12,7 +12,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8hI-F3-syk">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
+                    <rect key="frame" x="0.0" y="20" width="600" height="200"/>
                     <color key="backgroundColor" red="0.1960784314" green="0.41568627450000001" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="200" id="aF3-yI-eXg"/>
@@ -22,7 +22,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="8hI-F3-syk" secondAttribute="trailing" id="ExK-lF-36s"/>
-                <constraint firstItem="8hI-F3-syk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Fct-qC-p2o"/>
+                <constraint firstItem="8hI-F3-syk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="Fct-qC-p2o"/>
                 <constraint firstItem="8hI-F3-syk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="S4c-6r-wDb"/>
             </constraints>
         </view>

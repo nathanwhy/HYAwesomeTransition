@@ -26,17 +26,7 @@ class ViewController: UIViewController {
             imageStrings.append("doge")
         }
         imageStrings[10] = "doge2"
-        
-        
-        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
 }
 
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -67,7 +57,6 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
             let finalFrame = CGRectMake(40, 170, 100, 100)
             
             transition.registerTransition(startFrame, finalRect: finalFrame, transitionView: cell)
-            cell.hidden = true
             transitionCell = cell
             
             self.presentViewController(detailController, animated: true, completion: { 
@@ -82,9 +71,7 @@ extension ViewController: DetailViewControllerDelegate {
     func detailViewController(detailViewController: DetailViewController, didDismiss: Bool) {
         transition.finalFrame = detailViewController.imageView.convertRect(detailViewController.imageView.bounds, toView: detailViewController.view)
         detailViewController.imageView.hidden = true
-        self.dismissViewControllerAnimated(true) { 
-            self.transitionCell?.hidden = false
-        }
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }
 

@@ -12,11 +12,12 @@ import UIKit
 
 class AwesomeTransition:NSObject, UIViewControllerAnimatedTransitioning {
     
-    var duration = 1.5
-    var finalFrame: CGRect = CGRectZero
-    var containerBackgroundView: UIView?
-    var isPresent: Bool = false
-    let scale = UIScreen.mainScreen().bounds.size.height
+    public var duration = 1.5
+    public var finalFrame: CGRect = CGRectZero
+    public var containerBackgroundView: UIView?
+    public var isPresent: Bool = false
+    weak let scale = UIScreen.mainScreen().bounds.size.height
+    weak var transitionView: UIView?
     
     private var snapshotView: UIView?
     private var startFrame: CGRect = CGRectZero
@@ -29,6 +30,7 @@ class AwesomeTransition:NSObject, UIViewControllerAnimatedTransitioning {
         snapshotView?.layer.shadowRadius = 3;
         snapshotView?.layer.shadowColor = UIColor.lightGrayColor().CGColor
         snapshotView?.layer.shadowOffset = CGSizeMake(5, 5)
+        self.transitionView = transitionView
     }
     
     // MARK: UIViewControllerAnimatedTransitioning
@@ -46,9 +48,12 @@ class AwesomeTransition:NSObject, UIViewControllerAnimatedTransitioning {
     }
     
     private func present(transitionContext: UIViewControllerContextTransitioning) {
-        let toVC = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
-        let fromVC = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
-        let containerView = transitionContext.containerView()!
+        
+        guard let toVC = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey),
+              let fromVC = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey),
+              let containerView = transitionContext.containerView(),
+              let snapshot = snapshotView
+              else { return }
         
         if let containerBackground = containerBackgroundView {
             containerBackground.frame = containerView.bounds;
@@ -61,11 +66,6 @@ class AwesomeTransition:NSObject, UIViewControllerAnimatedTransitioning {
         let x = finalFrame.origin.x - startFrame.origin.x;
         let y = finalFrame.origin.y - startFrame.origin.y;
         
-        guard snapshotView != nil else {
-            return
-        }
-        
-        let snapshot = snapshotView!
         snapshot.frame = startFrame
         containerView.addSubview(snapshot)
         
@@ -78,6 +78,7 @@ class AwesomeTransition:NSObject, UIViewControllerAnimatedTransitioning {
         let partDuration = duration / 3
         
         toVC.view.hidden = true
+        self.transitionView?.hidden = true
         
         UIView.animateKeyframesWithDuration(duration, delay: 0, options: .CalculationModeLinear, animations: { 
             UIView.addKeyframeWithRelativeStartTime(0, relativeDuration: 0.5, animations: { 
@@ -109,15 +110,11 @@ class AwesomeTransition:NSObject, UIViewControllerAnimatedTransitioning {
                 
                 maskLayer.addAnimation(pingAnimation, forKey: "pingInvert")
                 
-                // release path
-                
                 UIView.animateWithDuration(partDuration, animations: { 
                     snapshot.layer.transform = downViewTranfrom
                     }, completion: { (finished) in
                         fromVC.view.alpha = 1.0
-                        if let containerBackground = self.containerBackgroundView {
-                            containerBackground.alpha = 1.0
-                        }
+                        self.containerBackgroundView?.alpha = 1.0
                         self.snapshotView?.removeFromSuperview()
                         maskLayer.removeFromSuperlayer()
                         transitionContext.completeTransition(true)
@@ -127,9 +124,12 @@ class AwesomeTransition:NSObject, UIViewControllerAnimatedTransitioning {
     }
     
     private func dismiss(transitionContext: UIViewControllerContextTransitioning) {
-        let toVC = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
-        let fromVC = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
-        let containerView = transitionContext.containerView()!
+        
+        guard let toVC = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey),
+            let fromVC = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey),
+            let containerView = transitionContext.containerView(),
+            let snapshot = snapshotView
+            else { return }
         
         containerView.addSubview(toVC.view)
         if let containerBackground = containerBackgroundView {
@@ -141,11 +141,6 @@ class AwesomeTransition:NSObject, UIViewControllerAnimatedTransitioning {
         let x = startFrame.origin.x - finalFrame.origin.x;
         let y = startFrame.origin.y - finalFrame.origin.y;
         
-        guard snapshotView != nil else {
-            return
-        }
-        
-        let snapshot = snapshotView!
         snapshot.transform = CGAffineTransformIdentity
         snapshot.frame = finalFrame
         containerView.addSubview(snapshot)
@@ -177,7 +172,6 @@ class AwesomeTransition:NSObject, UIViewControllerAnimatedTransitioning {
         
         maskLayer.addAnimation(pingAnimation, forKey: "pingInvert")
         
-        
         UIView.animateWithDuration(partDuration, animations: {
             snapshot.layer.transform = upViewTransfrom
         }) { (finished) in
@@ -190,15 +184,12 @@ class AwesomeTransition:NSObject, UIViewControllerAnimatedTransitioning {
                 })
                 UIView.addKeyframeWithRelativeStartTime(0.5, relativeDuration: 0.5, animations: { 
                     snapshot.layer.transform = downViewTranfrom
-                    if let containerBackground = self.containerBackgroundView {
-                        containerBackground.alpha = 0.0
-                    }
+                    self.containerBackgroundView?.alpha = 0.0
                 })
                 
                 }, completion: { (finish) in
-                    if let containerBackground = self.containerBackgroundView {
-                        containerBackground.removeFromSuperview()
-                    }
+                    self.containerBackgroundView?.removeFromSuperview()
+                    self.transitionView?.hidden = false
                     maskLayer.removeFromSuperlayer()
                     snapshot.removeFromSuperview()
                     transitionContext.completeTransition(true)
