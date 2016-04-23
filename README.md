@@ -4,7 +4,7 @@ Custom transition between viewcontrollers.
 
 The idea comes from gewara(格瓦拉).
 
-> Programming in Swift? Switch to [Swfit branch](https://github.com/nathanwhy/HYAwesomeTransition/tree/dev_swift2.2)
+> Programming in Swift? Switch to [Swift branch](https://github.com/nathanwhy/HYAwesomeTransition/tree/dev_swift2.2)
 
 
 ![screenshot](screenshot/screenshot.gif)
