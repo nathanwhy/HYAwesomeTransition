@@ -13,7 +13,8 @@
 
 @interface ViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UIViewControllerTransitioningDelegate,ModalViewControllerDelegate,UINavigationControllerDelegate>
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
-@property (nonatomic, strong)HYAwesomeTransition *awesometransition;
+@property (nonatomic, strong) HYAwesomeTransition *awesometransition;
+@property (nonatomic, strong) NSMutableArray *imagesArray;
 
 @end
 
@@ -21,6 +22,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.imagesArray = @[].mutableCopy;
+    for (int i = 0; i < 30; i++) {
+        [self.imagesArray addObject:@"doge2"];
+    }
+    [self.imagesArray replaceObjectAtIndex:10 withObject:@"doge"];
     
     self.awesometransition = [[HYAwesomeTransition alloc] init];
     self.awesometransition.duration = 1.5f;
@@ -35,14 +42,13 @@
     static NSString *ReuseIdentifier = @"CustomMainCell";
     CustomCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ReuseIdentifier forIndexPath:indexPath];
     
-    NSString *imageName = indexPath.row == 10? @"doge": @"doge2";
-    cell.imageView.image = [UIImage imageNamed:imageName];
+    cell.imageView.image = [UIImage imageNamed:self.imagesArray[indexPath.row]];
     
     return cell;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 30;
+    return self.imagesArray.count;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -50,7 +56,7 @@
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
     
     ModalViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ModalViewController"];
-    vc.imageName = indexPath.row == 10? @"doge": @"doge2";
+    vc.imageName = self.imagesArray[indexPath.row];
     vc.transitioningDelegate = self;
     vc.delegate              = self;
     
@@ -62,6 +68,7 @@
     
     [self presentViewController:vc animated:YES completion:^{
         vc.avatar.hidden = NO;
+        vc.avatar.image = [UIImage imageNamed:self.imagesArray[indexPath.row]];
     }];
 }
 

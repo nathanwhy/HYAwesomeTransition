@@ -69,7 +69,7 @@
     
     CGFloat x = _finalFrame.origin.x - _startFrame.origin.x;
     CGFloat y = _finalFrame.origin.y - _startFrame.origin.y;
-    
+    CGFloat mainScreenHeight = [UIScreen mainScreen].bounds.size.height;
     
     UIView *snapshotView = self.snapshotView;
     snapshotView.frame = _startFrame;
@@ -106,7 +106,7 @@
         
         toVC.view.hidden = NO;
         
-        CGRect rect = CGRectInset(_finalFrame, -500, -500);
+        CGRect rect = CGRectInset(_finalFrame, -mainScreenHeight, -mainScreenHeight);
         
         CGPathRef startPath = CGPathCreateWithEllipseInRect(rect, NULL);
         CGPathRef endPath   = CGPathCreateWithEllipseInRect(_finalFrame, NULL);
@@ -162,7 +162,7 @@
     
     CGFloat x = _startFrame.origin.x - _finalFrame.origin.x;
     CGFloat y = _startFrame.origin.y - _finalFrame.origin.y;
-    
+    CGFloat mainScreenHeight = [UIScreen mainScreen].bounds.size.height;
     
     UIView *snapshotView = self.snapshotView;
     
@@ -181,7 +181,7 @@
     
     NSTimeInterval partDuration = [self transitionDuration:transitionContext] / 3;
     
-    CGRect rect = CGRectInset(_finalFrame, -500, -500);
+    CGRect rect = CGRectInset(_finalFrame, -mainScreenHeight, -mainScreenHeight);
     
     CGPathRef endPath   = CGPathCreateWithEllipseInRect(rect, NULL);
     CGPathRef startPath = CGPathCreateWithEllipseInRect(_finalFrame, NULL);

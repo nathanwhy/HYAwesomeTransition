@@ -14,12 +14,6 @@
 
 @implementation ModalViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-
-    self.avatar.image = [UIImage imageNamed:self.imageName];
-    
-}
 - (IBAction)backClicked:(id)sender {
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(modalViewControllerDidClickedDismissButton:)]) {
