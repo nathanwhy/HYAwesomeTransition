@@ -61,6 +61,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
             
             self.presentViewController(detailController, animated: true, completion: { 
                 detailController.imageView.hidden = false
+                detailController.imageView.image = UIImage(named: self.imageStrings[indexPath.item])
             })
         }
         

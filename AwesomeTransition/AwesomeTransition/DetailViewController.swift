@@ -18,12 +18,6 @@ class DetailViewController: UIViewController {
     var imageName:String?
     @IBOutlet weak var imageView: UIImageView!
     
-    override func viewDidLoad() {
-        imageView.hidden = true
-        if let imageName = imageName {
-            imageView.image = UIImage(named: imageName)
-        }
-    }
     @IBAction func close(sender: AnyObject) {
         self.imageView.hidden = true
         self.delegate?.detailViewController(self, didDismiss: true)

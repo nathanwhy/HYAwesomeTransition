@@ -12,12 +12,12 @@ import UIKit
 
 class AwesomeTransition:NSObject, UIViewControllerAnimatedTransitioning {
     
-    public var duration = 1.5
-    public var finalFrame: CGRect = CGRectZero
-    public var containerBackgroundView: UIView?
-    public var isPresent: Bool = false
-    weak let scale = UIScreen.mainScreen().bounds.size.height
-    weak var transitionView: UIView?
+    var duration = 1.5
+    var finalFrame: CGRect = CGRectZero
+    var containerBackgroundView: UIView?
+    var isPresent: Bool = false
+    private let scale = UIScreen.mainScreen().bounds.size.height
+    private var transitionView: UIView?
     
     private var snapshotView: UIView?
     private var startFrame: CGRect = CGRectZero
