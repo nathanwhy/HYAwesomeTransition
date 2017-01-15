@@ -10,17 +10,16 @@ import UIKit
 
 class ViewController: UIViewController {
 
+	@IBOutlet weak var collectionView: UICollectionView!
     var imageStrings: [String] = []
-    weak var transitionCell: UIView?
     lazy var transition: AwesomeTransition = {
         let transition = AwesomeTransition()
-        transition.containerBackgroundView = NSBundle.mainBundle().loadNibNamed("ContainerView", owner: nil, options: nil).last as? UIView
+        transition.containerBackgroundView = Bundle.main.loadNibNamed("ContainerView", owner: nil, options: nil)?.last as? UIView
         return transition
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         for _ in 0...30 {
             imageStrings.append("doge")
@@ -31,36 +30,35 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return imageStrings.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CustomCell", forIndexPath: indexPath) as! CustomCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCell", for: indexPath) as! CustomCell
         cell.imageView.image = UIImage(named: imageStrings[indexPath.item])
         return cell
     }
     
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let cell = collectionView.cellForItemAtIndexPath(indexPath)
+        let cell = collectionView.cellForItem(at: indexPath)
         
-        let detailController = self.storyboard?.instantiateViewControllerWithIdentifier("detailController") as? DetailViewController
+        let detailController = self.storyboard?.instantiateViewController(withIdentifier: "detailController") as? DetailViewController
         
         if let detailController = detailController, let cell = cell{
             detailController.imageName = imageStrings[indexPath.item]
             detailController.transitioningDelegate = self
             detailController.delegate = self
             
-            let startFrame = cell.convertRect(cell.bounds, toView: self.view)
-            let finalFrame = CGRectMake(40, 170, 100, 100)
+            let startFrame = cell.convert(cell.bounds, to: self.view)
+            let finalFrame = CGRect(x: 40, y: 170, width: 100, height: 100)
             
-            transition.registerTransition(startFrame, finalRect: finalFrame, transitionView: cell)
-            transitionCell = cell
+            self.transition.registerTransition(startFrame, finalRect: finalFrame, transitionView: cell)
             
-            self.presentViewController(detailController, animated: true, completion: { 
-                detailController.imageView.hidden = false
+            self.present(detailController, animated: true, completion: { 
+                detailController.imageView.isHidden = false
                 detailController.imageView.image = UIImage(named: self.imageStrings[indexPath.item])
             })
         }
@@ -69,20 +67,20 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 }
 
 extension ViewController: DetailViewControllerDelegate {
-    func detailViewController(detailViewController: DetailViewController, didDismiss: Bool) {
-        transition.finalFrame = detailViewController.imageView.convertRect(detailViewController.imageView.bounds, toView: detailViewController.view)
-        detailViewController.imageView.hidden = true
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func detailViewController(_ detailViewController: DetailViewController, didDismiss: Bool) {
+        transition.finalFrame = detailViewController.imageView.convert(detailViewController.imageView.bounds, to: detailViewController.view)
+        detailViewController.imageView.isHidden = true
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
 extension ViewController: UIViewControllerTransitioningDelegate {
     
-    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         transition.isPresent = true
         return transition
     }
-    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         transition.isPresent = false
         return transition
     }

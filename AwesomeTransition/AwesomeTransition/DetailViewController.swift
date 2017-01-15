@@ -9,7 +9,7 @@
 import UIKit
 
 protocol DetailViewControllerDelegate : NSObjectProtocol {
-    func detailViewController(detailViewController: DetailViewController, didDismiss: Bool)
+    func detailViewController(_ detailViewController: DetailViewController, didDismiss: Bool)
 }
 
 class DetailViewController: UIViewController {
@@ -18,8 +18,8 @@ class DetailViewController: UIViewController {
     var imageName:String?
     @IBOutlet weak var imageView: UIImageView!
     
-    @IBAction func close(sender: AnyObject) {
-        self.imageView.hidden = true
+    @IBAction func close(_ sender: AnyObject) {
+        self.imageView.isHidden = true
         self.delegate?.detailViewController(self, didDismiss: true)
     }
 }
