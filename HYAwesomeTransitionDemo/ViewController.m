@@ -38,7 +38,7 @@
 }
 
 #pragma mark - collectionView
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *ReuseIdentifier = @"CustomMainCell";
     CustomCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ReuseIdentifier forIndexPath:indexPath];
     
@@ -47,11 +47,11 @@
     return cell;
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.imagesArray.count;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
     
@@ -74,7 +74,7 @@
 
 #pragma mark - ModelViewController delegate
 
-- (void)modalViewControllerDidClickedDismissButton:(ModalViewController *)viewController{
+- (void)modalViewControllerDidClickedDismissButton:(ModalViewController *)viewController {
     self.awesometransition.finalFrame = [viewController.avatar convertRect:viewController.avatar.bounds toView:viewController.view];
     viewController.avatar.hidden = YES;
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -82,14 +82,12 @@
 
 #pragma mark - transition
 
-- (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source
-{
+- (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
     self.awesometransition.present = YES;
     return self.awesometransition;
 }
 
-- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
-{
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
     self.awesometransition.present = NO;
     return self.awesometransition;
 }

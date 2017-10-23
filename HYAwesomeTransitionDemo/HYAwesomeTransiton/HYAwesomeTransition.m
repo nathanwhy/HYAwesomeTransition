@@ -11,8 +11,8 @@
 
 @interface HYAwesomeTransition()
 
-@property (nonatomic, strong)UIView *snapshotView;
-@property (nonatomic, assign)CGRect startFrame;
+@property (nonatomic, strong) UIView *snapshotView;
+@property (nonatomic, assign) CGRect startFrame;
 @property (nonatomic, copy) void (^completion)(BOOL finished);
 @property (nonatomic, weak) UIView *originView;
 @end
@@ -35,23 +35,19 @@
 }
 
 
-- (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext
-{
+- (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext {
     return self.duration;
 }
 
-- (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext
-{
+- (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext {
     if (self.present) {
-        
         [self presentWithTransiton:transitionContext];
-    }else{
-        
+    } else {
         [self dismissWithTranstion:transitionContext];
     }
 }
 
-- (void)presentWithTransiton:(id <UIViewControllerContextTransitioning>)transitionContext{
+- (void)presentWithTransiton:(id <UIViewControllerContextTransitioning>)transitionContext {
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     
@@ -143,10 +139,9 @@
             
         }];
     }];
-    
 }
 
-- (void)dismissWithTranstion:(id <UIViewControllerContextTransitioning>)transitionContext{
+- (void)dismissWithTranstion:(id <UIViewControllerContextTransitioning>)transitionContext {
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     
