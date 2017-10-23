@@ -9,12 +9,19 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, HYTransitionType) {
+    HYTransitionTypeNone,
+    HYTransitionTypeNavigation,
+    HYTransitionTypeModal
+};
+
 @interface HYAwesomeTransition : NSObject<UIViewControllerAnimatedTransitioning>
 
-@property (nonatomic, assign)CGFloat duration;
-@property (nonatomic, assign)CGRect finalFrame;
-@property (nonatomic, strong)UIView *containerBackgroundView;
-@property (nonatomic, getter=isPresent)BOOL present;
+@property (nonatomic, assign) CGFloat duration;
+@property (nonatomic, assign) CGRect finalFrame;
+@property (nonatomic, strong) UIView *containerBackgroundView;
+@property (nonatomic, assign) HYTransitionType type;
+@property (nonatomic, getter=isPresent) BOOL present;
 
 - (void)registerStartFrame:(CGRect)startFrame
                 finalFrame:(CGRect)finalFrame

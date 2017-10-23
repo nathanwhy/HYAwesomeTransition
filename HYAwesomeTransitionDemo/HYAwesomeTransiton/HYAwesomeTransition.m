@@ -130,11 +130,6 @@
             snapshotView.layer.transform = downViewTranfrom;
         } completion:^(BOOL finished) {
             fromVC.view.alpha = 1.0;
-            if (self.containerBackgroundView) {
-                [self.containerBackgroundView removeFromSuperview];
-            }
-            [maskLayer removeFromSuperlayer];
-            [snapshotView removeFromSuperview];
             [transitionContext completeTransition:YES];
             
         }];
@@ -146,7 +141,6 @@
     UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     
     UIView *containerView = [transitionContext containerView];
-    
     
     [containerView addSubview:toVC.view];
     if (self.containerBackgroundView) {
