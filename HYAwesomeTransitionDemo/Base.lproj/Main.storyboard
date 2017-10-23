@@ -1,11 +1,31 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="NIg-b4-2pc">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="gsW-7Y-Fbr">
+            <objects>
+                <navigationController id="NIg-b4-2pc" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vja-7g-Qiw">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="yVu-a0-0ot"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JEt-Ez-lFg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="199" y="319"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
@@ -15,12 +35,12 @@
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vjO-ZS-uCC">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
+                                <color key="backgroundColor" red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cwY-GW-A6A">
                                     <size key="itemSize" width="100" height="100"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -39,9 +59,8 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                 </imageView>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="Bnn-6c-1K0" firstAttribute="leading" secondItem="MHJ-JL-Rps" secondAttribute="leading" id="3bg-WG-BXT"/>
                                             <constraint firstAttribute="bottom" secondItem="Bnn-6c-1K0" secondAttribute="bottom" id="CQQ-Mt-feI"/>
@@ -59,11 +78,27 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="tgt-oQ-QAO"/>
                                 </connections>
                             </collectionView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="oOj-yd-qpc">
+                                <rect key="frame" x="87.5" y="629" width="200" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="MgX-AE-Zhu"/>
+                                    <constraint firstAttribute="width" constant="200" id="uMo-D0-fTZ"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Modal"/>
+                                    <segment title="Push"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedControlAction:" destination="vXZ-lx-hvc" eventType="valueChanged" id="yTL-Bu-qLN"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="vjO-ZS-uCC" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="4Qq-4x-LSD"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="vjO-ZS-uCC" secondAttribute="bottom" id="cMb-7B-xqC"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="oOj-yd-qpc" secondAttribute="bottom" constant="8" id="GeA-aV-AuW"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="vjO-ZS-uCC" secondAttribute="bottom" constant="50" id="cMb-7B-xqC"/>
+                            <constraint firstItem="oOj-yd-qpc" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="faO-3R-w5Q"/>
                             <constraint firstItem="vjO-ZS-uCC" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="fbE-Xg-27N"/>
                             <constraint firstAttribute="trailing" secondItem="vjO-ZS-uCC" secondAttribute="trailing" id="icc-wK-EBj"/>
                         </constraints>
@@ -86,23 +121,23 @@
                         <viewControllerLayoutGuide type="bottom" id="BjO-62-oFT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PP7-Fd-zT4">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nwa-OR-D9A">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PUt-T5-ueb" userLabel="header">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HYAwesomTransition" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V4b-tM-NJW">
-                                                <rect key="frame" x="31" y="60" width="204" height="24"/>
+                                                <rect key="frame" x="31" y="60" width="199.5" height="24"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.19789254668465997" green="0.41660865687621113" blue="0.58201152146464641" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.19789254668465997" green="0.41660865687621113" blue="0.58201152146464641" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="V4b-tM-NJW" firstAttribute="top" secondItem="PUt-T5-ueb" secondAttribute="top" constant="60" id="ZPZ-2L-SU0"/>
                                             <constraint firstAttribute="height" constant="200" id="iTT-IT-7MJ"/>
@@ -117,21 +152,21 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1DG-7g-2pF" userLabel="content">
-                                        <rect key="frame" x="30" y="300" width="260" height="345"/>
+                                        <rect key="frame" x="30" y="300" width="315" height="284.5"/>
                                         <string key="text">Adopt the UIViewControllerAnimatedTransitioning protocol in objects that implement the animations for a custom view controller transition. The methods in this protocol let you define an animator object, which creates the animations for transitioning a view controller on or off screen in a fixed amount of time. The animations you create using this protocol must not be interactive. To create interactive transitions, you must combine your animator object with another object that controls the timing of your animations.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MKm-0o-kPc">
-                                        <rect key="frame" x="187" y="210" width="100" height="30"/>
-                                        <color key="backgroundColor" red="0.1529411765" green="0.33725490200000002" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <rect key="frame" x="242" y="210" width="100" height="30"/>
+                                        <color key="backgroundColor" red="0.1529411765" green="0.33725490200000002" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="OVE-lD-Fsw"/>
                                             <constraint firstAttribute="width" constant="100" id="UYc-mC-iAF"/>
                                         </constraints>
                                         <state key="normal" title="go back">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="backClicked:" destination="XXT-r1-5OE" eventType="touchUpInside" id="Zuy-70-WY4"/>
@@ -153,7 +188,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="0.90200966282894746" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.90200966596603394" green="0.90200966596603394" blue="0.90200966596603394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="nwa-OR-D9A" secondAttribute="trailing" id="4i5-nq-2Ih"/>
                             <constraint firstItem="1DG-7g-2pF" firstAttribute="width" relation="lessThanOrEqual" secondItem="PP7-Fd-zT4" secondAttribute="width" constant="-60" id="5ma-gH-48c"/>
